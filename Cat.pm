@@ -5,7 +5,7 @@ use IO::File;
 use Carp;
 use vars qw($VERSION);
 
-$VERSION = '1.0';
+$VERSION = '1.01';
 
 
 
@@ -23,8 +23,9 @@ IO::Cat - Object-oriented Perl implementation of cat(1)
 
 =head1 DESCRIPTION
 
-IO::Cat provides an intuitive, scalable interface to the common task
-of printing to a filehandle.
+IO::Cat provides an intuitive, scalable, encapsulated interface to the
+common task of printing to a filehandle. Use it a few times, and you'll
+never know how you lived without it!
 
 =head1 METHODS
 
@@ -40,6 +41,7 @@ args here and use the file() accessor method to set the filename
 before calling cat().
 
 =cut
+#'
 
 sub new {
     my ($class, $file) = @_;
@@ -90,7 +92,7 @@ false if an error occurred.
 =cut
 
 
-sub cat {
+sub cat ($) {
 	my ($self, $output) = @_;
     my $input = $self->file();
     
@@ -117,7 +119,7 @@ backwards, line by line -- or returns false if an error occurred.
 
 
 
-sub cattail {
+sub cattail ($) {
 	my ($self, $output) = @_;
     my $input = $self->file();
 	my @lines = (0);
@@ -143,10 +145,6 @@ sub cattail {
 =head1 AUTHOR
 
 Dennis Taylor, E<lt>corbeau@execpc.comE<gt>
-
-=head1 APOLOGIES TO...
-
-Marc Blank.
 
 =head1 SEE ALSO
 
